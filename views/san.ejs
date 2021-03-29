@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this theme -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/paper-dashboard.css">
+
+    <link rel="shortcut icon" href="../img/favicon.png">
+
+    <title>e-Market</title>
+
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 92%;  /* The width is the width of the web page */
+        margin: 4%;
+        border: 1px solid black;
+        border-radius: 10px;
+       }
+
+       /**#floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+        border-radius: 10px;
+      }
+
+      #floating-panel2 {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+
+      #right-panel {
+        height: 400px;
+        width: 92%;
+        margin: 4%;
+        overflow: auto;
+      }
+
+      #map {
+        margin-right: 400px;
+      }
+
+      #floating-panel {
+        background: #fff;
+        padding: 5px;
+        font-size: 14px;
+        font-family: Arial;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        display: none;
+        margin-top: 1%;
+      }
+
+      #floating-panel2 {
+        background: #FFEA82;
+        padding: 5px;
+        font-size: 14px;
+        font-family: Arial;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        display: none;
+        margin-left: 3%;
+        margin-top: 1%;
+      }
+      
+
+      @media print {
+        #map {
+          height: 500px;
+          margin: 0;
+        }
+        #right-panel {
+          float: none;
+          width: auto;
+        }
+      }*/
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow p-3 mb-5">
+      <a class="navbar-brand logo" href="/"><img src="img/emarket.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link medium" href="/">Home<span class="sr-only">(página atual)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lista">Gerar lista</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastrar">Cadastre-se</a>
+          </li>
+          <% if(logado == 1 || logado == 2 || logado == 3){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Sair</a>
+          </li>
+          <% }else if(logado == 0 || (typeof logado === "undefined")){ %>
+            <li class="nav-item">
+            <a class="nav-link" href="/logar">Login</a>
+          </li>
+          <% } %>
+          <li class="nav-item">
+            <a class="nav-link" href="/reclamacao">Reclamações</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header >
+      
+    </header>
+    <main>
+        
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+        
+              <!-- Portfolio Section Heading -->
+              <h2 class="page-section-heading text-center text-uppercase text-danger mb-0">SAN</h2>
+        
+              <!-- Icon Divider -->
+              <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+              </div>
+        
+              <!-- Portfolio Grid Items -->
+              <div class="row">
+        
+                <!-- Portfolio Item 1 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                      <div class="portfolio-item-caption-content text-center text-white">
+                        <i class="fas fa-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="img/portfolio/historia.png" alt="">
+                  </div>
+                </div>
+        
+                <!-- Portfolio Item 2 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                      <div class="portfolio-item-caption-content text-center text-white">
+                        <i class="fas fa-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="img/portfolio/loja.png" alt="">
+                  </div>
+                </div>
+        
+                <!-- Portfolio Item 3 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                      <div class="portfolio-item-caption-content text-center text-white">
+                        <i class="fas fa-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="img/portfolio/contato.png" alt="">
+                  </div>
+                </div>
+        
+              </div>
+              <!-- /.row -->
+        
+            </div>
+          </section><!-- details card section starts from here -->
+
+          <!--<div id="map"></div>-->
+      <script>
+// Initialize and add the map
+        function initMap() {
+  // The location of Uluru
+          var uluru = {lat: -23.4062825, lng: -46.8874445};
+  // The map, centered at Uluru
+          var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 18, center: uluru});
+  // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+      </script>
+
+          <!--<div id="floating-panel2">
+              <b>Modo de viagem: </b>
+              <select id="mode">
+                  <option value="DRIVING">Dirigindo</option>
+                  <option value="WALKING">Andando</option>
+                  <option value="TRANSIT">Transporte público</option>
+              </select>
+            </div>
+            <div id="floating-panel">
+            <strong>Origem:</strong>
+            <select id="start">
+              <option value="chicago, il">Chicago</option>
+              <option value="st louis, mo">St Louis</option>
+              <option value="joplin, mo">Joplin, MO</option>
+              <option value="oklahoma city, ok">Oklahoma City</option>
+              <option value="amarillo, tx">Amarillo</option>
+              <option value="gallup, nm">Gallup, NM</option>
+              <option value="flagstaff, az">Flagstaff, AZ</option>
+              <option value="winona, az">Winona</option>
+              <option value="kingman, az">Kingman</option>
+              <option value="barstow, ca">Barstow</option>
+              <option value="san bernardino, ca">San Bernardino</option>
+              <option value="los angeles, ca">Los Angeles</option>
+            </select>
+            <br>
+            <strong>Destino:</strong>
+            <select id="end">
+              <option value="chicago, il">San</option>
+              <option value="st louis, mo">Sonda</option>
+              <option value="joplin, mo">Vencedor</option>
+            </select>
+          </div>
+          
+          <div id="map"></div>
+          <div id="right-panel"></div>
+      <script>
+        function initMap() {
+        
+        /**if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          }, function() {
+            handleLocationError(true, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, map.getCenter());
+        }*/
+
+        var directionsRenderer = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var san = {lat: -23.4062825, lng: -46.8874445};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: san
+        });
+
+        var marker = new google.maps.Marker({position: san, map: map});
+
+        directionsRenderer.setMap(map);
+        directionsRenderer.setPanel(document.getElementById('right-panel'));
+
+        var control = document.getElementById('floating-panel');
+        var control2 = document.getElementById('floating-panel2');
+
+        control.style.display = 'block';
+        control2.style.display = 'block';
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control2);
+
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+        document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsRenderer);
+        });
+
+        /**document.getElementById('start').addEventListener('change', onChangeHandler);
+        document.getElementById('end').addEventListener('change', onChangeHandler);*/
+
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+    </script>-->
+    </main>
+
+    <footer class="bg-warning py-5">
+    <div class="container">
+      <div class="medium text-center text-white">Copyright &copy; 2019 - Arthur Tavares, Caio Zanqueta e Denise dos Santos</div>
+    </div>
+  </footer>
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="fas fa-times text-danger"></i>
+            </span>
+          </button>
+          <div class="modal-body text-center">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <!-- Portfolio Modal - Title -->
+                  <h2 class="portfolio-modal-title text-danger text-uppercase mb-0">História</h2>
+                  <!-- Icon Divider -->
+                  <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon">
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <div class="divider-custom-line"></div>
+                  </div>
+                  <!-- Portfolio Modal - Image -->
+                  <img class="img-fluid rounded mb-5" src="img/portfolio/logoSan.png">
+                  <!-- Portfolio Modal - Text -->
+                  <p class="mb-5">O SAN Supermercados nasceu da iniciativa de um imigrante japonês, o senhor Hiroshi Sato, que chegou do Japão em 1932 e foi trabalhar como agricultor na região de Cafelândia, São Paulo.</p>
+                  <p class="mb-5">Inauguração da loja Osasco<br>De 1960 a 1978, o senhor Sato trabalhou com transporte de arroz de Jales para a Grande São Paulo. Essa atividade o deixou em constante contato com pequenos varejistas, motivando seu interesse pelo ramo. Então, em 1978, com a ajuda de seu primo Francisco Kibe, que já era varejista, ele abriu um pequeno empreendimento em Osasco: o Mercadinho Kazu.</p>
+                  <p class="mb-5">Inauguração da 1ª loja em Itapevi<br>Em 1981, o senhor Hiroshi Sato mudou sua residência para a cidade de Itapevi, região oeste da Grande São Paulo. Lá, inaugurou uma segunda loja no bairro Dr. Cardoso, ponto escolhido pela proximidade com a estação de trem onde milhares de trabalhadores desembarcavam diariamente.</p>
+                  <p class="mb-5">Em 2005 com 4 lojas e 240 funcionários, a empresa, agora administrada pelos filhos do senhor Sato, foi dividida e as lojas Centro – Ita Shopping e Cohab ganharam um posicionamento diferenciado e uma administração independente. O logotipo e a identidade visual foram modernizados com a criação do mascote Sanzito e o slogan “SAN. Economia para sua família”, que representa ideais de qualidade, bom atendimento e preço justo.</p>
+                  <button class="btn btn-warning" href="#" data-dismiss="modal">
+                    <i class="fas fa-times fa-fw"></i>
+                    Close Window
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Portfolio Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="fas fa-times text-danger"></i>
+            </span>
+          </button>
+          <div class="modal-body text-center">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <!-- Portfolio Modal - Title -->
+                  <h2 class="portfolio-modal-title text-danger text-uppercase mb-0">Localização</h2>
+                  <!-- Icon Divider -->
+                  <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon">
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <div class="divider-custom-line"></div>
+                  </div>
+                  <!-- Portfolio Modal - Image -->
+                  <img class="img-fluid rounded mb-5" src="img/portfolio/logoSan.png" alt="">
+                  <!-- Portfolio Modal - Text -->
+                  <div id="map"></div>
+                  <button class="btn btn-warning" href="#" data-dismiss="modal">
+                    <i class="fas fa-times fa-fw"></i>
+                    Fechar Janela
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Portfolio Modal 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="fas fa-times text-danger"></i>
+            </span>
+          </button>
+          <div class="modal-body text-center">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <!-- Portfolio Modal - Title -->
+                  <h2 class="portfolio-modal-title text-danger text-uppercase mb-0">Contato</h2>
+                  <!-- Icon Divider -->
+                  <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon">
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <div class="divider-custom-line"></div>
+                  </div>
+                  <!-- Portfolio Modal - Text -->
+                  <p class="mb-5"><b>Endereço:</b> Avenida Ten. Marquês, 4958 - Vila Poupanca, Santana de Parnaíba - SP, 06530-001 <br>
+                    <b>Horário:</b>  Aberto ⋅ Fecha às 21:00<br>
+                    <b>Telefone:</b> (11) 4156-1232.</p>
+                  <button class="btn btn-warning" href="#" data-dismiss="modal">
+                    <i class="fas fa-times fa-fw"></i>
+                    <b>Fechar Janela</b>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+  
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="../assets/js/plugins/moment.min.js"></script>
+
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="../assets/js/plugins/bootstrap-switch.js"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+
+
+
+<!-- Chart JS -->
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+
+<!-- Control Center for Paper Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/paper-dashboard.js?v=2.0.0" type="text/javascript"></script>
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/demo/js/demo.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB89bPDUjyWeTlfjKjehw18cMtR6iBec-o&callback=initMap"
+  type="text/javascript"></script>
+  </body>
+</html>

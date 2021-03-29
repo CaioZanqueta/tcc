@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <script src="https://kit.fontawesome.com/ce1aca897c.js"></script>
+
+    <title>e-Market</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow p-3 mb-5">
+      <a class="navbar-brand logo" href="/"><img src="img/emarket.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link medium" href="/">Home<span class="sr-only">(página atual)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastrarmercado">Cadastrar Mercado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logarMercado">Logar Mercado</a>
+          </li>
+          <% if(logado == 2){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Sair</a>
+          </li>
+          <% }else if(logado == 0 || (typeof logado === "undefined")){ %>
+            <li class="nav-item">
+            <a class="nav-link" href="/logar">Login</a>
+          </li>
+          <% } %>
+          <li class="nav-item">
+            <a class="nav-link" href="/reclamacao">Reclamações</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section class="page-section shadow p-3 mb-5" id="about">
+        <div class="container-fluid marketing">
+    
+            <!-- Três colunas de texto, abaixo do carousel -->
+            <div class="row">
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="img/A.jpg" alt="Generic placeholder image" width="140" height="140"  >
+                <h2>Arthur Tavares</h2>
+                <p class="text-justify">Arthur Tavares 17 anos, aluno da ETEC Bartolomeu Bueno da Silva - Anhanguera, cursando o ensino médio integrado a informática para a internet, parte da equipe e-Market.</p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="img/C.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Caio Zanqueta</h2>
+                <p class="text-justify">Caio Zanqueta, 18 anos, aluno da ETEC Bartolomeu Bueno da Silva - Anhanguera, cursando o ensino médio integrado a informática para internet, parte da equipe e-Market.</p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="img/D.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Denise dos Santos</h2>
+                <p class="text-justify">Denise dos Santos, 17 anos, aluna da ETEC Bartolomeu Bueno da Silva - Anhanguera, cursando o ensino médio integrado a informática para internet, parte da equipe e-Market.</p>
+              </div><!-- /.col-lg-4 -->
+            </div>
+      </section>
+    </main>
+
+    <footer class="bg-warning py-5">
+    <div class="container">
+      <div class="medium text-center text-white">Copyright &copy; 2019 - Arthur Tavares, Caio Zanqueta e Denise dos Santos</div>
+    </div>
+  </footer>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+  </body>
+</html>

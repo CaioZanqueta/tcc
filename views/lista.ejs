@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="shortcut icon" href="../img/favicon.png">
+
+    <title>e-Market</title>
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow p-3 mb-5">
+      <a class="navbar-brand logo" href="/"><img src="../img/emarket.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link medium" href="/">Home<span class="sr-only">(página atual)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lista">Gerar lista</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastrar">Cadastre-se</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Sair</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reclamacao">Reclamações</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header >
+      
+    </header>
+    <main class="container lista">
+      <div class="jumbotron jumbotron-fluid p-3 p-md-5 text-white rounded bg-danger">
+        <form method="post" action="gerar">
+          <div class="col-md-9 px-0">
+            <div class="form-group" id="formulario">
+            <h1 class="display-4 font-italic">Faça sua lista:</h1>
+            <p class="lead my-3">Utilize esse serviço para encontrar as melhores opções de preço para a sua lista de mercado.</p>
+            <input class="form-control" type="text" name="produto" placeholder="Produto">
+            <br>
+            </div>
+            <div class="form-group">
+              <a class="btn btn-dark bg-dark" id="add-campo">+</a>
+              <button type="submit" class="btn btn-dark bg-dark">Gerar!</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="bg-warning py-5">
+    <div class="container">
+      <div class="medium text-center text-white">Copyright &copy; 2019 - Arthur Tavares, Caio Zanqueta e Denise dos Santos</div>
+    </div>
+  </footer>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+        <script>
+            var cont = 1;
+            //https://api.jquery.com/click/
+            $('#add-campo').click(function () {
+                cont++;
+                //https://api.jquery.com/append/
+                $('#formulario').append('<div class="form-group" id="campo' + cont + '"><input class="form-control" type="text" name="produto" placeholder="Produto"> <br> <button type="button" id="' + cont + '" class="btn btn-dark bg-dark btn-apagar"> - </button></div>');
+            });
+
+            $('form').on('click', '.btn-apagar', function () {
+                var button_id = $(this).attr("id");
+                $('#campo' + button_id + '').remove();
+            });
+        </script>
+  </body>
+</html>
